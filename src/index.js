@@ -5,7 +5,7 @@ import App from './App';
 import { ChakraProvider } from "@chakra-ui/react"
 import { BrowserRouter, Route } from "react-router-dom";
 import HomePage from './components/homepage';
-import Login from './components/login';
+import Login from './components/user/login';
 import UserRegister from './components/user/register';
 
 ReactDOM.render(

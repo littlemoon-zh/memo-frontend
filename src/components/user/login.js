@@ -3,6 +3,8 @@ import {
     useHistory,
 } from "react-router-dom";
 
+import { Link as RLink } from "react-router-dom";
+
 import {
     Flex,
     Heading,
@@ -21,7 +23,7 @@ import {
     InputRightElement
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import API from "../util/api";
+import API from "../../util/api";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -146,7 +148,7 @@ const Login = (props) => {
             </Stack>
             <Box>
                 New to us?{" "}
-                <Link color="teal.500" href="#" >
+                <Link as={RLink} color="teal.500" to="/register" >
                     Sign Up
                 </Link>
             </Box>
