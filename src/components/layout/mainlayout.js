@@ -4,23 +4,18 @@ import Footer from "./footer"
 import StatInfo from "../stat"
 import Editor from '../editor'
 
-const Homelayout = ({ children }) => {
-
-
+const Homelayout = ({ children, getData }) => {
+    console.log('props', getData);
     return (<>
         <Nav />
         <Flex justify='center'>
             <Spacer />
 
-            {/* <Box pt='80px' w='100px'>
-                <Center>   <StatInfo /> </Center>
-            </Box> */}
-
             <Box minH='100%' pt='50px'>{children}</Box>
 
             <Spacer />
         </Flex>
-        <Editor />
+        <Editor getData={getData} />
 
     </>)
 }

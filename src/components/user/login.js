@@ -20,7 +20,8 @@ import {
     FormControl,
     useColorModeValue,
     FormHelperText,
-    InputRightElement
+    InputRightElement,
+    useToast
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import API from "../../util/api";
@@ -47,7 +48,7 @@ const Login = (props) => {
         e.preventDefault();
         setShowPassword(!showPassword)
     };
-
+    const toast = useToast()
 
     let history = useHistory();
 
@@ -55,7 +56,12 @@ const Login = (props) => {
         e.preventDefault();
 
         if (!username || !password) {
-            alert('Input complete info')
+            toast({
+                title: "Please complete the fields",
+                status: "error",
+                duration: 1200,
+                isClosable: false,
+            })
             return;
         }
 
@@ -64,24 +70,25 @@ const Login = (props) => {
             headers: { 'Content-Type': 'application/json', 'token': localStorage.getItem('token') || "token" }
         });
         const { status, msg, token } = data;
-        console.log(data);
-        if (token) {
+        if (token && status == 200) {
             localStorage.setItem('token', token);
             history.replace('/home');
         } else {
-            alert('validation error');
+            toast({
+                title: msg,
+                status: "error",
+                duration: 1200,
+                isClosable: false,
+            })
         }
 
     }
-
-
 
     return (
         <Flex
             flexDirection="column"
             width="100wh"
             height="100vh"
-            // backgroundColor="gray.200"
             justifyContent="center"
             alignItems="center"
             bg={useColorModeValue('white.200', 'gray.700')}
@@ -108,7 +115,7 @@ const Login = (props) => {
                                         pointerEvents="none"
                                         children={<CFaUserAlt color="gray.300" />}
                                     />
-                                    <Input type="email" value={username} onChange={e => SetUsername(e.target.value)} />
+                                    <Input type="text" value={username} onChange={e => SetUsername(e.target.value)} />
                                 </InputGroup>
                             </FormControl>
                             <FormControl>

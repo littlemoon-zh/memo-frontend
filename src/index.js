@@ -10,6 +10,7 @@ import UserRegister from './components/user/register';
 
 ReactDOM.render(
   <React.StrictMode>
+
     < BrowserRouter>
       <ChakraProvider>
         <Route path="/login" exact component={Login} />

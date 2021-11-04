@@ -1,15 +1,9 @@
 import { Center, Flex } from "@chakra-ui/layout";
-import { AddIcon, EditIcon } from '@chakra-ui/icons';
+import { EditIcon } from '@chakra-ui/icons';
 import {
     Button,
     Textarea,
-    Box,
     useDisclosure,
-    Drawer,
-    DrawerContent,
-    DrawerOverlay,
-    DrawerHeader,
-    DrawerBody,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -19,7 +13,6 @@ import {
     ModalCloseButton,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import InputWindow from "./inputbox";
 import api from "../util/api";
 
 async function postNote(data) {
@@ -33,7 +26,7 @@ async function postNote(data) {
         });
 }
 
-export default function Editor() {
+export default function Editor({ getData }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [input, setInput] = useState('');
 
@@ -42,6 +35,8 @@ export default function Editor() {
         if (input.length > 0) {
             const data = { 'content': input };
             postNote(data);
+            console.log('update UI');
+            getData();
         }
         onClose()
     };

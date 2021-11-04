@@ -21,12 +21,9 @@ class HomePage extends React.Component {
     }
 
     async getNotes() {
-        console.log('get notes');
         const { data } = await API.get('api/notes', { headers: { 'token': localStorage.getItem('token') } });
-
         if (data['status'] === 200) {
             this.setState({ notes: data.notes || [] });
-            console.log('notes', data.notes);
         } else {
             alert(data.msg);
         }
@@ -34,7 +31,7 @@ class HomePage extends React.Component {
 
     render() {
         return (
-            <Homelayout>
+            <Homelayout getData={() => this.getNotes()}>
                 <Stack direction='column'>
                     <Box px={4}>
                         {this.state.notes.length !== 0 ?
@@ -42,7 +39,6 @@ class HomePage extends React.Component {
                                 return <BlogPostWithImage content={note.content} create_time={note.create_time} />
                             })
                             : <></>
-
                         }
 
                     </Box >
