@@ -13,7 +13,7 @@ import GitIssues from "./pages/TemporaryPages/GitIssues";
 
 ReactDOM.render(
   <React.StrictMode>
-    < BrowserRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <ChakraProvider>
           <Route path="/login" exact component={Login}/>

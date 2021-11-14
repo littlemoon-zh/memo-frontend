@@ -23,7 +23,7 @@ export default function Nav() {
     const { colorMode, toggleColorMode } = useColorMode();
     const logout = (e) => {
         e.preventDefault();
-        localStorage.removeItem('token');
+        localStorage.clear();
         history.push('/login');
     }
 
