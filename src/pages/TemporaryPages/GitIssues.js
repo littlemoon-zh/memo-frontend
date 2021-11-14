@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {fetchIssues} from "./gitSlice";
 import {useDispatch, useSelector} from "react-redux";
 import GitInfoCard from "./GitInfoCard";
-import Nav from "../Mainpage/Navbar";
+import Nav from "../Common/Navbar";
 
 function GitIssues() {
   const dispatch = useDispatch()

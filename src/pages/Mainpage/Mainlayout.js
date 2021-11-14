@@ -1,5 +1,5 @@
 import { Box, Center, Flex, Spacer } from "@chakra-ui/layout"
-import Nav from "./Navbar"
+import Nav from "../Common/Navbar"
 import StatInfo from "./Statistics"
 import Editor from './Editor'
 

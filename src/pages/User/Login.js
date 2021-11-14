@@ -31,7 +31,6 @@ const CFaLock = chakra(FaLock);
 
 
 const Login = (props) => {
-    // console.log(props);
     let defaultPassword = '';
     let defaultUsername = '';
     if ('password' in (props.history.location.state || {})) {

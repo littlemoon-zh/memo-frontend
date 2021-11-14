@@ -38,7 +38,7 @@ export default function Editor() {
     if (input.length > 0) {
       const data = {'content': input};
       dispatch(postNote(data))
-      dispatch(fetchNote())
+      setInput('')
     }
     onClose()
   };
