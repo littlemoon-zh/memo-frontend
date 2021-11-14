@@ -12,32 +12,33 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import React from "react";
+import React, {useEffect} from "react";
 import {useState} from "react";
 import api from "../../util/api";
+import {postNote, fetchNote} from "./slice/noteSlice";
+import {useDispatch} from "react-redux";
 
-async function postNote(data) {
-  await api.post("/api/note",
-    JSON.stringify(data),
-    {
-      headers: {
-        "Content-Type": "application/json",
-        'token': localStorage.getItem('token')
-      },
-    });
-}
+// async function postNote(data) {
+//   await api.post("/api/note",
+//     JSON.stringify(data),
+//     {
+//       headers: {
+//         "Content-Type": "application/json",
+//         'token': localStorage.getItem('token')
+//       },
+//     });
+// }
 
-export default function Editor({getData}) {
+export default function Editor() {
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [input, setInput] = useState('');
-
+  const dispatch = useDispatch();
   const onClick = (e) => {
     e.preventDefault();
     if (input.length > 0) {
       const data = {'content': input};
-      postNote(data);
-      console.log('update UI');
-      getData();
+      dispatch(postNote(data))
+      dispatch(fetchNote())
     }
     onClose()
   };

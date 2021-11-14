@@ -4,7 +4,6 @@ import StatInfo from "./Statistics"
 import Editor from './Editor'
 
 const Homelayout = ({ children }) => {
-    console.log('props');
     return (<>
         <Nav />
         <Flex justify='center'>
