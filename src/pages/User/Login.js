@@ -69,8 +69,8 @@ const Login = (props) => {
             JSON.stringify({ username, password }), {
             headers: { 'Content-Type': 'application/json', 'token': localStorage.getItem('token') || "token" }
         });
-        const { status, msg, token } = data;
-        if (token && status == 200) {
+        const { code, msg, data: { token } } = data;
+        if (token && code === 200) {
             localStorage.setItem('token', token);
             history.replace('/home');
         } else {

@@ -15,7 +15,7 @@ import {
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { useHistory } from 'react-router';
 
-import LeftDrawer from './leftdrawer';
+import Leftdrawer from './Leftdrawer';
 
 export default function Nav() {
 
@@ -32,7 +32,7 @@ export default function Nav() {
             <Box position={'fixed'} width={'100%'} bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                     <Box>
-                        <LeftDrawer />
+                        <Leftdrawer />
                     </Box>
 
                     <Flex alignItems={'center'}>
@@ -43,7 +43,6 @@ export default function Nav() {
 
                             <Menu>
                                 <MenuButton
-                                    // as={Button}
                                     minW={0}>
                                     More
                                 </MenuButton>
